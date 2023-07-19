@@ -5,7 +5,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,14 +24,14 @@ public class User {
     @Column(name = "number_phone")
     private String numberPhone;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "users")
     private List<UserRole> userRoles;
 
-    public User() {
+    public Users() {
     }
 
-    public User(int id, String fullName, String email,
-                String password, String numberPhone, List<UserRole> userRoles) {
+    public Users(int id, String fullName, String email,
+                 String password, String numberPhone, List<UserRole> userRoles) {
         this.id = id;
         this.fullName = fullName;
         this.email = email;

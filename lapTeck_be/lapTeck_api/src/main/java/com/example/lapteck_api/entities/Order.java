@@ -26,7 +26,7 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name = "id_user")
-    private User user;
+    private Users users;
 
     @OneToMany(mappedBy = "order")
     private List<OrderDetail> orderDetails;
@@ -35,13 +35,13 @@ public class Order {
     }
 
     public Order(int id, String address, String nameCustomer, String numberPhone,
-                 String note, User user, List<OrderDetail> orderDetails) {
+                 String note, Users users, List<OrderDetail> orderDetails) {
         this.id = id;
         this.address = address;
         this.nameCustomer = nameCustomer;
         this.numberPhone = numberPhone;
         this.note = note;
-        this.user = user;
+        this.users = users;
         this.orderDetails = orderDetails;
     }
 
@@ -85,12 +85,12 @@ public class Order {
         this.note = note;
     }
 
-    public User getUser() {
-        return user;
+    public Users getUser() {
+        return users;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser(Users users) {
+        this.users = users;
     }
 
     public List<OrderDetail> getOrderDetails() {
