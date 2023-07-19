@@ -27,25 +27,25 @@ create table category(
     name_category varchar(50)
 );
 
-create table produce(
-	id_produce int auto_increment primary key not null,
-    name_produce varchar(50)
+create table manufacturer(
+	id_mft int auto_increment primary key not null,
+    name_mft varchar(50)
 );
 
-create table product(
-	id_product int auto_increment primary key not null,
+create table laptop(
+	id_laptop int auto_increment primary key not null,
     `cpu` varchar(255) DEFAULT NULL,
     price int,
     battery varchar(25),
     operation_system varchar(25),
     screen varchar(25),
     ram varchar(25),
-    name_product varchar(50),
+    name_laptop varchar(50),
     `description` varchar(255),
     id_category int,
-    id_produce int,
+    id_mft int,
     foreign key (id_category) references category(id_category),
-    foreign key (id_produce) references produce(id_produce)
+    foreign key (id_mft) references manufacturer(id_mft)
 );
 
 create table orders(
@@ -53,7 +53,6 @@ create table orders(
     address varchar(255),
     name_customer varchar(255),
     number_phone varchar(20),
-    `status` varchar(50),
     note varchar(255),
     id_user int,
     foreign key (id_user) references users(id_user)
@@ -63,8 +62,8 @@ create table order_detail(
 	id int auto_increment primary key not null,
     unit_price double,
     quantity int,
-    id_product int,
+    id_laptop int,
     id_order int,
-    foreign key (id_product) references product(id_product),
+    foreign key (id_laptop) references laptop(id_laptop),
     foreign key (id_order) references orders(id_order)
 )
