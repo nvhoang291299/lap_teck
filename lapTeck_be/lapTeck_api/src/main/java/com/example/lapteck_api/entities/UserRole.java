@@ -1,5 +1,7 @@
 package com.example.lapteck_api.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,10 +15,12 @@ public class UserRole {
 
     @ManyToOne
     @JoinColumn(name = "id_user")
+    @JsonIgnore
     private Users users;
 
     @ManyToOne
     @JoinColumn(name = "id_role")
+    @JsonIgnore
     private Role role;
 
     public UserRole() {

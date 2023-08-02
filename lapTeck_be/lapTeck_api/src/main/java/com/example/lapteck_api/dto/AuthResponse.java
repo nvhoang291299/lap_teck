@@ -9,6 +9,7 @@ public class AuthResponse {
     private String accessToken;
 
     private Collection<? extends GrantedAuthority> roles;
+    private boolean statusAuth;
 
     public AuthResponse() { }
 
@@ -21,6 +22,13 @@ public class AuthResponse {
         this.email = username;
         this.accessToken = accessToken;
         this.roles = authorities;
+    }
+
+    public AuthResponse(String email, String accessToken, Collection<? extends GrantedAuthority> roles, boolean statusAuth) {
+        this.email = email;
+        this.accessToken = accessToken;
+        this.roles = roles;
+        this.statusAuth = statusAuth;
     }
 
     public String getEmail() {
@@ -45,5 +53,13 @@ public class AuthResponse {
 
     public void setRoles(Collection<? extends GrantedAuthority> roles) {
         this.roles = roles;
+    }
+
+    public boolean isStatusAuth() {
+        return statusAuth;
+    }
+
+    public void setStatusAuth(boolean statusAuth) {
+        this.statusAuth = statusAuth;
     }
 }

@@ -11,4 +11,10 @@ public class AppConfig {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         return bCryptPasswordEncoder;
     }
+//    public static void main(String[] args) {
+//        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+//        String str = bCryptPasswordEncoder.encode("123456");
+//        System.out.println(str);
+//        System.out.println(bCryptPasswordEncoder.matches("123456", str));
+//    }
 }

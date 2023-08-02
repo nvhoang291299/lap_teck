@@ -1,6 +1,7 @@
 package com.example.lapteck_api.entities;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -21,8 +22,17 @@ public class Order {
     @Column(name = "number_phone")
     private String numberPhone;
 
+    @Column(name = "date_order")
+    private Date dateOrder;
+
+    @Column(name = "date_ship")
+    private Date dateShip;
+
     @Column(name = "note")
     private String note;
+
+    @Column(name = "status_order")
+    private String statusOrder;
 
     @ManyToOne
     @JoinColumn(name = "id_user")
@@ -99,5 +109,37 @@ public class Order {
 
     public void setOrderDetails(List<OrderDetail> orderDetails) {
         this.orderDetails = orderDetails;
+    }
+
+    public Date getDateOrder() {
+        return dateOrder;
+    }
+
+    public void setDateOrder(Date dateOrder) {
+        this.dateOrder = dateOrder;
+    }
+
+    public Date getDateShip() {
+        return dateShip;
+    }
+
+    public void setDateShip(Date dateShip) {
+        this.dateShip = dateShip;
+    }
+
+    public Users getUsers() {
+        return users;
+    }
+
+    public void setUsers(Users users) {
+        this.users = users;
+    }
+
+    public String getStatusOrder() {
+        return statusOrder;
+    }
+
+    public void setStatusOrder(String statusOrder) {
+        this.statusOrder = statusOrder;
     }
 }

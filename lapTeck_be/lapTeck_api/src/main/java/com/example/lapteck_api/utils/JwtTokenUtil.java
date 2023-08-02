@@ -18,7 +18,7 @@ public class JwtTokenUtil {
     public String generateAccessToken(MyUserPrincipal account) {
         return Jwts.builder()
                 .setSubject(account.getUsername())
-                .setIssuer("CodeJava")
+                .setIssuer("nvhoang")
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRE_DURATION))
                 .signWith(SignatureAlgorithm.HS512, SECRET_KEY)

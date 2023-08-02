@@ -1,6 +1,9 @@
 package com.example.lapteck_api.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -11,14 +14,14 @@ public class Laptop {
     @Column(name = "id_laptop")
     private int id;
 
-    @Column(name = "name_laptop")
-    private String nameProduct;
-
     @Column(name = "cpu")
     private String cpu;
 
     @Column(name = "price")
     private int price;
+
+    @Column(name = "quantity_storage")
+    private String quantityStorage;
 
     @Column(name = "battery")
     private String battery;
@@ -32,52 +35,84 @@ public class Laptop {
     @Column(name = "ram")
     private String ram;
 
-    @Column(name = "quantity")
-    private String quantityStorage;
+    @Column(name = "name_laptop")
+    private String nameProduct;
+
+    @Column(name = "design")
+    private String design;
+
+    @Column(name = "warranty")
+    private String warranty;
 
     @Column(name = "description")
     private String description;
 
-    @Column(name = "weight")
-    private String weight;
-
-    @Column(name = "card")
-    private String card;
+    @Column(name = "image")
+    private String image;
 
     @ManyToOne
     @JoinColumn(name = "id_category")
+    @JsonIgnore
     private Category category;
 
     @ManyToOne
     @JoinColumn(name = "id_mft")
+    @JsonIgnore
     private Manufacturer manufacturer;
 
     @OneToMany(mappedBy = "laptop")
     private List<OrderDetail> orderDetails;
 
+    @OneToMany(mappedBy = "laptop")
+    @JsonIgnore
+    private List<IndexCart> indexCarts;
+
     public Laptop() {
     }
 
-    public Laptop(int id, String nameProduct, String cpu, int price,
-                  String battery, String oSystem, String screen,
-                  String ram, String quantityStorage, String description,
-                  String weight, String card, Category category,
+    public Laptop(int id, String cpu, int price, String quantityStorage, String battery,
+                  String oSystem, String screen, String ram, String nameProduct, String design,
+                  String warranty, String description, String image, Category category,
                   Manufacturer manufacturer, List<OrderDetail> orderDetails) {
         this.id = id;
-        this.nameProduct = nameProduct;
         this.cpu = cpu;
         this.price = price;
+        this.quantityStorage = quantityStorage;
         this.battery = battery;
         this.oSystem = oSystem;
         this.screen = screen;
         this.ram = ram;
-        this.quantityStorage = quantityStorage;
+        this.nameProduct = nameProduct;
+        this.design = design;
+        this.warranty = warranty;
         this.description = description;
-        this.weight = weight;
-        this.card = card;
+        this.image = image;
         this.category = category;
         this.manufacturer = manufacturer;
         this.orderDetails = orderDetails;
+    }
+
+    public Laptop(int id, String cpu, int price, String quantityStorage, String battery,
+                  String oSystem, String screen, String ram, String nameProduct, String design,
+                  String warranty, String description, String image, Category category,
+                  Manufacturer manufacturer, List<OrderDetail> orderDetails, List<IndexCart> indexCarts) {
+        this.id = id;
+        this.cpu = cpu;
+        this.price = price;
+        this.quantityStorage = quantityStorage;
+        this.battery = battery;
+        this.oSystem = oSystem;
+        this.screen = screen;
+        this.ram = ram;
+        this.nameProduct = nameProduct;
+        this.design = design;
+        this.warranty = warranty;
+        this.description = description;
+        this.image = image;
+        this.category = category;
+        this.manufacturer = manufacturer;
+        this.orderDetails = orderDetails;
+        this.indexCarts = indexCarts;
     }
 
     public int getId() {
@@ -86,14 +121,6 @@ public class Laptop {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getNameProduct() {
-        return nameProduct;
-    }
-
-    public void setNameProduct(String nameProduct) {
-        this.nameProduct = nameProduct;
     }
 
     public String getCpu() {
@@ -110,6 +137,14 @@ public class Laptop {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public String getQuantityStorage() {
+        return quantityStorage;
+    }
+
+    public void setQuantityStorage(String quantityStorage) {
+        this.quantityStorage = quantityStorage;
     }
 
     public String getBattery() {
@@ -144,12 +179,28 @@ public class Laptop {
         this.ram = ram;
     }
 
-    public String getQuantityStorage() {
-        return quantityStorage;
+    public String getNameProduct() {
+        return nameProduct;
     }
 
-    public void setQuantityStorage(String quantityStorage) {
-        this.quantityStorage = quantityStorage;
+    public void setNameProduct(String nameProduct) {
+        this.nameProduct = nameProduct;
+    }
+
+    public String getDesign() {
+        return design;
+    }
+
+    public void setDesign(String design) {
+        this.design = design;
+    }
+
+    public String getWarranty() {
+        return warranty;
+    }
+
+    public void setWarranty(String warranty) {
+        this.warranty = warranty;
     }
 
     public String getDescription() {
@@ -160,20 +211,12 @@ public class Laptop {
         this.description = description;
     }
 
-    public String getWeight() {
-        return weight;
+    public String getImage() {
+        return image;
     }
 
-    public void setWeight(String weight) {
-        this.weight = weight;
-    }
-
-    public String getCard() {
-        return card;
-    }
-
-    public void setCard(String card) {
-        this.card = card;
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public Category getCategory() {
@@ -198,5 +241,13 @@ public class Laptop {
 
     public void setOrderDetails(List<OrderDetail> orderDetails) {
         this.orderDetails = orderDetails;
+    }
+
+    public List<IndexCart> getIndexCarts() {
+        return indexCarts;
+    }
+
+    public void setIndexCarts(List<IndexCart> indexCarts) {
+        this.indexCarts = indexCarts;
     }
 }

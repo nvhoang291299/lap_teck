@@ -8,6 +8,8 @@ import Laptop from '../src/pages/user/Laptop.js';
 import Products from '../src/pages/user/Products.js';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Admin from './pages/admin/Admin';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -17,8 +19,9 @@ function App() {
         <Route path='/' element={<HomePage />}></Route>
         <Route path='/cart' element={<CartPage />}></Route>
         <Route path='/checkout' element={<Checkout />}></Route>
-        <Route path='/laptop' element={<Laptop />}></Route>
+        <Route path='/laptop/:id' element={<Laptop />}></Route>
         <Route path='/products' element={<Products />}></Route>
+        <Route path='/admin' element={<Admin />}></Route>
       </Routes>
     <Footer />
     </>

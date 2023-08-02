@@ -1,12 +1,21 @@
-import Header from '../../components/Header';
+import Collections from '../../components/Collections';
+import HotDeal from '../../components/HotDeal';
+import CarouselProduct from '../../components/CarouselProduct';
 
 function HomePage() {
-    return(
+    return (
         <>
-            <h1>Home page</h1>
-            
+            <div className="section">
+                <div className="container">
+                    <Collections />
+                    <Collections />
+                    <Collections />
+                </div>
+            </div>
+            <CarouselProduct />
+            <HotDeal />
+            <CarouselProduct />
         </>
-        
     )
 }
 

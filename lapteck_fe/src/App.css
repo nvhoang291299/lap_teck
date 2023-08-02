@@ -399,6 +399,8 @@ textarea.input {
 
 .header-logo .logo img {
   display: block;
+  width: 30%;
+  margin: auto;
 }
 
 /*----------------------------*\
@@ -733,7 +735,7 @@ textarea.input {
   padding: 60px 0px;
   margin: 30px 0px;
   background-color: #E4E7ED;
-  background-image: url();
+  /* background-image: url(''); */
   background-position: center;
   background-repeat: no-repeat;
 }
@@ -980,7 +982,7 @@ textarea.input {
   transform: translateY(100%);
 }
 
-.product .add-to-cart .add-to-cart-btn {
+.product .product-body .add-to-cart-btn {
   position: relative;
   border: 2px solid transparent;
   height: 40px;
@@ -1013,7 +1015,7 @@ textarea.input {
   padding: 0px 30px 0px 50px;
 }
 
-.product .add-to-cart .add-to-cart-btn:hover>i {
+.product .product-body .add-to-cart-btn:hover>i {
   opacity: 1;
   visibility: visible;
 }

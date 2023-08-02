@@ -1,4 +1,6 @@
 package com.example.lapteck_api.entities;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -14,6 +16,7 @@ public class Category {
     private String nameCategory;
 
     @OneToMany(mappedBy = "category")
+    @JsonBackReference
     private List<Laptop> laptops;
 
     public Category() {

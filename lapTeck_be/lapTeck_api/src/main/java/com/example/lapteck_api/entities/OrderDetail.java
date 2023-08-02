@@ -1,5 +1,7 @@
 package com.example.lapteck_api.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -15,20 +17,23 @@ public class OrderDetail {
     private String unitPrice;
 
     @Column(name = "quantity")
-    private String quantityOrder;
+    private int quantityOrder;
+
 
     @ManyToOne
     @JoinColumn(name = "id_laptop")
+    @JsonIgnore
     private Laptop laptop;
 
     @ManyToOne
     @JoinColumn(name = "id_order")
+    @JsonIgnore
     private Order order;
 
     public OrderDetail() {
     }
 
-    public OrderDetail(int id, String unitPrice, String quantityOrder, Laptop laptop, Order order) {
+    public OrderDetail(int id, String unitPrice, int quantityOrder, Laptop laptop, Order order) {
         this.id = id;
         this.unitPrice = unitPrice;
         this.quantityOrder = quantityOrder;
@@ -52,11 +57,11 @@ public class OrderDetail {
         this.unitPrice = unitPrice;
     }
 
-    public String getQuantityOrder() {
+    public int getQuantityOrder() {
         return quantityOrder;
     }
 
-    public void setQuantityOrder(String quantityOrder) {
+    public void setQuantityOrder(int quantityOrder) {
         this.quantityOrder = quantityOrder;
     }
 
@@ -75,4 +80,5 @@ public class OrderDetail {
     public void setOrder(Order order) {
         this.order = order;
     }
+
 }

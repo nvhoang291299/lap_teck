@@ -38,7 +38,8 @@ public class LoginController {
 
             MyUserPrincipal account = (MyUserPrincipal) authentication.getPrincipal();
             String accessToken = jwtUtil.generateAccessToken(account);
-            AuthResponse response = new AuthResponse(account.getUsername(), account.getAuthorities(), accessToken);
+            AuthResponse response = new AuthResponse(account.getUsername(), accessToken,
+                    account.getAuthorities(), true);
 
             return ResponseEntity.ok().body(response);
 

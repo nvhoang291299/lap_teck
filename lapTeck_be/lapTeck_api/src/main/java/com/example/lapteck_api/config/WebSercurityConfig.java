@@ -38,11 +38,9 @@ public class WebSercurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable().cors();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
-        http.authorizeRequests().antMatchers("/auth/login",
-                        "/api/feedbacks/create-feedback","/ListBillDetail",
-                        "/topProduct", "/newProduct", "/menu", "/menu/*", "/news/list").permitAll()
-                .and().authorizeRequests().antMatchers("/api/admin/*").hasAnyRole("ADMIN")
-                .and().authorizeRequests().antMatchers("/api/feedbacks/*").hasAnyRole("ADMIN")
+        http.authorizeRequests().antMatchers("/auth/login", "/laptop",
+                        "/add-cart", "/cart", "/delete-cart", "/create-order", "/detail/**").permitAll()
+                .and().authorizeRequests().antMatchers().hasAnyRole("ADMIN", "USER")
                 .and().authorizeRequests()
                 .anyRequest().authenticated();
 
@@ -54,8 +52,8 @@ public class WebSercurityConfig extends WebSecurityConfigurerAdapter {
                                     ex.getMessage()
                             );
                         }
-                )
-                .accessDeniedPage("/403");
+                );
+//                .accessDeniedPage("/403");
 
         http.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
     }

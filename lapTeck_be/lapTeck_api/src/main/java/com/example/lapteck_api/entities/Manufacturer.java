@@ -15,6 +15,9 @@ public class Manufacturer {
     @Column(name = "name_mft")
     private String nameMft;
 
+    @Column(name = "image_mft")
+    private String imageMft;
+
     @OneToMany(mappedBy = "manufacturer")
     private List<Laptop> laptops;
 
@@ -49,5 +52,13 @@ public class Manufacturer {
 
     public void setLaptops(List<Laptop> laptops) {
         this.laptops = laptops;
+    }
+
+    public String getImageMft() {
+        return imageMft;
+    }
+
+    public void setImageMft(String imageMft) {
+        this.imageMft = imageMft;
     }
 }
