@@ -7,16 +7,6 @@ function Header() {
 
 	const [isActive, setIsActive] = useState();
 
-	// // // Mobile Nav toggle
-	// $('.menu-toggle > a').on('click', function (e) {
-	// 	e.preventDefault();
-	// 	$('#responsive-nav').toggleClass('active');
-	// })
-	// // Fix cart dropdown from closing
-	// $('.cart-dropdown').on('click', function (e) {
-	// 	e.stopPropagation();
-	// });
-
 	const handleClick = (e) => {
 		e.preventDefault();
 		setIsActive(!isActive);
@@ -32,9 +22,6 @@ function Header() {
 							<li><a href="#"><i className="fa-solid fa-envelope"></i> hoang@email.com</a></li>
 							<li><a href="#"><i className="fa-solid fa-location-dot"></i> Sơn Trà, Đà Nẵng</a></li>
 						</ul>
-						{/* <ul className="header-links pull-right">
-						<li></li>
-					</ul> */}
 					</div>
 				</div>
 				<div id="header">
@@ -58,36 +45,45 @@ function Header() {
 							</div>
 							<div className="col-lg-3 clearfix col-md-12">
 								<div className="header-ctn">
-									{/* <div>
-									<a href="#">
-                                        <i className="fa-solid fa-heart"></i>
-                                        <span>Yêu thích</span>
-										<div className="qty">2</div>
-									</a>
-								</div> */}
-									<div className="dropdown">
+									<div>
 										<Link to="/cart">
 											<i className="fa-solid fa-cart-shopping"></i>
 											<span>Giỏ hàng</span>
 											<div className="qty">3</div>
 										</Link>
-										{/* <div className="cart-dropdown">
-											
-										</div> */}
 									</div>
-									<div>
+									<div className="dropdown">
 										<a href="#" className="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 											<i className="fa-solid fa-user"></i>
 											<span>Tài khoản</span>
 										</a>
-										<ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-											<li><NavLink className="dropdown-item" to="#">
-												<i className="fa-solid fa-circle-user"></i>Thông tin tài khoản</NavLink></li>
-											<li><NavLink className="dropdown-item" to="#">
-											<i className="fa-solid fa-right-from-bracket"></i>Đăng xuất</NavLink></li>
-											<li className="" data-bs-toggle="modal" data-bs-target="#exampleModal"><NavLink className="dropdown-item" to="#">
-											<i className="fa-solid fa-right-from-bracket"></i>Đăng nhập</NavLink></li>
-										</ul>
+										
+										{sessionStorage.getItem("ROLES") === "ROLE_ADMIN" && (
+                        				<>
+											<ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+												<li><Link className="dropdown-item my-2" to="#">
+													<i className="fa-solid fa-circle-user me-2"></i> Quản lý</Link></li>
+												<li><NavLink className="dropdown-item" to="#">
+												<i className="fa-solid fa-right-from-bracket me-2"></i> Đăng xuất</NavLink></li>
+											</ul>
+										</>)}
+										{sessionStorage.getItem("ROLES") === "ROLE_USER" && (
+                        				<>
+											<ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+												<li><NavLink className="dropdown-item my-2" to="/info">
+													<i className="fa-solid fa-circle-user me-2"></i> Thông tin cá nhân</NavLink></li>
+												<li><NavLink className="dropdown-item" to="#">
+												<i className="fa-solid fa-right-from-bracket me-2"></i> Đăng xuất</NavLink></li>
+											</ul>
+										</>)}
+										{!sessionStorage.getItem("ROLES") && (
+											<>
+												<ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+													<li className="my-2" data-bs-toggle="modal" data-bs-target="#exampleModal"><NavLink className="dropdown-item" to="#">
+													<i className="fa-solid fa-arrow-right-from-bracket me-2"></i> Đăng nhập</NavLink></li>
+												</ul>
+											</>
+										)}
 										<div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 											<div className="modal-dialog">
 												<div className="modal-content">

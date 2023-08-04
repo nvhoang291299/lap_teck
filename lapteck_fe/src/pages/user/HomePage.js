@@ -7,9 +7,11 @@ function HomePage() {
         <>
             <div className="section">
                 <div className="container">
-                    <Collections />
-                    <Collections />
-                    <Collections />
+                    <div className="row">
+                        <Collections />
+                        <Collections />
+                        <Collections />
+                    </div>
                 </div>
             </div>
             <CarouselProduct />

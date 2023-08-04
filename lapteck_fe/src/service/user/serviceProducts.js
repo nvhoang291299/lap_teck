@@ -7,7 +7,5 @@ export const getList = async (page) => {
 
 export const getDetail = async (id) => {
     const res = await axios.get(`http://localhost:8080/detail/${id}`);
-    console.log(res.data);
-    return res.data;
-    
+    return res.data; 
 }

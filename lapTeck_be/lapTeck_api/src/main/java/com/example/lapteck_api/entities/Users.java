@@ -1,5 +1,7 @@
 package com.example.lapteck_api.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -25,6 +27,7 @@ public class Users {
     private String numberPhone;
 
     @OneToMany(mappedBy = "users")
+    @JsonIgnore
     private List<UserRole> userRoles;
 
     public Users() {

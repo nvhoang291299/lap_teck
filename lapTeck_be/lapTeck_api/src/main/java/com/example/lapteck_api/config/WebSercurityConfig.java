@@ -39,7 +39,8 @@ public class WebSercurityConfig extends WebSecurityConfigurerAdapter {
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
         http.authorizeRequests().antMatchers("/auth/login", "/laptop",
-                        "/add-cart", "/cart", "/delete-cart", "/create-order", "/detail/**").permitAll()
+                        "/add-cart", "/cart", "/delete-cart", "/create-order",
+                        "/detail/**", "/info", "/historyOrder").permitAll()
                 .and().authorizeRequests().antMatchers().hasAnyRole("ADMIN", "USER")
                 .and().authorizeRequests()
                 .anyRequest().authenticated();

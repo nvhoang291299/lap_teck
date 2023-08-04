@@ -10,6 +10,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Admin from './pages/admin/Admin';
 import 'react-toastify/dist/ReactToastify.css';
+import InfoPage from './pages/user/InfoPage';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path='/laptop/:id' element={<Laptop />}></Route>
         <Route path='/products' element={<Products />}></Route>
         <Route path='/admin' element={<Admin />}></Route>
+        <Route path='/info' element={<InfoPage />}></Route>
       </Routes>
     <Footer />
     </>

@@ -2,8 +2,7 @@ import laptop from '../image/laptop.webp';
 
 function Collections() {
     return (
-        <div className="row">
-            <div className="col-md-4 col-xs-6">
+            <div className="col-md-4 col-sm-12">
                 <div className="shop">
                     <div className="shop-img">
                         <img src={laptop} alt="" />
@@ -14,7 +13,6 @@ function Collections() {
                     </div>
                 </div>
             </div>
-        </div>
     )
 }
 
