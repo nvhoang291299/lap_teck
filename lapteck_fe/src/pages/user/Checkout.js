@@ -23,7 +23,7 @@ function Checkout() {
 				<div className="row">
 					<div className="col-md-7">
 						<BillingDeTails />
-						<ShipingDetails />
+						{/* <ShipingDetails /> */}
 					</div>
 					<div className="col-md-5 order-details">
 						<OrderDetails />

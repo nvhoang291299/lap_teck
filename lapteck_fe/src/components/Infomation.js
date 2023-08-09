@@ -14,8 +14,6 @@ function Infomation() {
         }
     }
 
-    console.log(user);
-
     useEffect(()=>{
         fetchData();
     }, [])

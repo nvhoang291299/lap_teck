@@ -662,6 +662,7 @@ textarea.input {
   .main-nav {
     margin: 0px;
     float: none;
+    display: block;
   }
   .main-nav>li {
     display: block;

@@ -36,4 +36,14 @@ public class LaptopService implements ILaptopService {
     public Laptop findById(int idLaptop) {
         return laptopRepository.findById(idLaptop).get();
     }
+
+    @Override
+    public List<Laptop> topThreeLaptop() {
+        return laptopRepository.topThreeLaptop();
+    }
+
+    @Override
+    public List<Laptop> findByNameLaptop(String nameLaptop) {
+        return laptopRepository.findByNameProduct(nameLaptop);
+    }
 }

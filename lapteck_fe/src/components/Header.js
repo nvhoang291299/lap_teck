@@ -2,15 +2,36 @@ import { useState } from 'react';
 import logo from '../image/logo.png';
 import Login from './Login';
 import { Link, NavLink } from 'react-router-dom';
+import { getListByNameProduct } from '../service/user/serviceProducts';
+import { useEffect } from 'react';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import { logout } from '../service/ServiceLogin';
 
 function Header() {
 
 	const [isActive, setIsActive] = useState();
 
+	// const length = JSON.parse(sessionStorage.getItem('carts')).length;
+	// console.log(length);
+
 	const handleClick = (e) => {
 		e.preventDefault();
 		setIsActive(!isActive);
 	}
+
+	const handleSearch = async (e) => {
+		e.preventDefault();
+		let nameLaptop = document.querySelector(".searchNameLaptop").value;
+		// sessionStorage.setItem('search', nameLaptop);
+		await getListByNameProduct(nameLaptop);
+	}
+
+	const handleLogout = (e) => {
+		e.preventDefault();
+		logout();
+	}
+
 
 	return (
 		<>
@@ -37,9 +58,8 @@ function Header() {
 							<div className="col-lg-6 col-md-12">
 								<div className="header-search">
 									<form>
-
-										<input className="input" placeholder="Tìm kiếm sản phẩm..." style={{ borderRadius: " 50px 0px 0px 50px" }} />
-										<button className="search-btn"><i className="fa fa-search"></i></button>
+										<input className="input searchNameLaptop" placeholder="Tìm kiếm sản phẩm..." style={{ borderRadius: " 50px 0px 0px 50px" }} />
+										<button className="search-btn" onClick={(e) => handleSearch(e)}><i className="fa fa-search"></i></button>
 									</form>
 								</div>
 							</div>
@@ -49,7 +69,7 @@ function Header() {
 										<Link to="/cart">
 											<i className="fa-solid fa-cart-shopping"></i>
 											<span>Giỏ hàng</span>
-											<div className="qty">3</div>
+											{/* <div className="qty">{length}</div> */}
 										</Link>
 									</div>
 									<div className="dropdown">
@@ -63,8 +83,8 @@ function Header() {
 											<ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 												<li><Link className="dropdown-item my-2" to="#">
 													<i className="fa-solid fa-circle-user me-2"></i> Quản lý</Link></li>
-												<li><NavLink className="dropdown-item" to="#">
-												<i className="fa-solid fa-right-from-bracket me-2"></i> Đăng xuất</NavLink></li>
+												<li><button className="dropdown-item" onClick={(e) => handleLogout(e)}>
+												<i className="fa-solid fa-right-from-bracket me-2"></i> Đăng xuất</button></li>
 											</ul>
 										</>)}
 										{sessionStorage.getItem("ROLES") === "ROLE_USER" && (
@@ -72,15 +92,18 @@ function Header() {
 											<ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 												<li><NavLink className="dropdown-item my-2" to="/info">
 													<i className="fa-solid fa-circle-user me-2"></i> Thông tin cá nhân</NavLink></li>
-												<li><NavLink className="dropdown-item" to="#">
+												<li><NavLink className="dropdown-item" onClick={(e) => handleLogout(e)}>
 												<i className="fa-solid fa-right-from-bracket me-2"></i> Đăng xuất</NavLink></li>
 											</ul>
 										</>)}
 										{!sessionStorage.getItem("ROLES") && (
 											<>
 												<ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-													<li className="my-2" data-bs-toggle="modal" data-bs-target="#exampleModal"><NavLink className="dropdown-item" to="#">
-													<i className="fa-solid fa-arrow-right-from-bracket me-2"></i> Đăng nhập</NavLink></li>
+													<li className="my-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+														<NavLink className="dropdown-item" to="#">
+															<i className="fa-solid fa-arrow-right-from-bracket me-2"></i> Đăng nhập
+														</NavLink>
+													</li>
 												</ul>
 											</>
 										)}

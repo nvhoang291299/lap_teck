@@ -11,6 +11,7 @@ import Footer from './components/Footer';
 import Admin from './pages/admin/Admin';
 import 'react-toastify/dist/ReactToastify.css';
 import InfoPage from './pages/user/InfoPage';
+// import 'bootstrap/dist/css/bootstrap.css';
 
 function App() {
   return (

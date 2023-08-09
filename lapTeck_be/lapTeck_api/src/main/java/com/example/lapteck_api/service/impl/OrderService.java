@@ -15,19 +15,13 @@ public class OrderService implements IOrderService {
     @Autowired
     private OrderRepository orderRepository;
 
-//    @Override
-//    public List<Order> findAllById(int id) {
-//        return orderRepository.findAllByIdUser(id);
-//    }
-
-
-//    @Override
-//    public Order findByIdUser(int idUser) {
-//        return orderRepository.findByIdUser(idUser);
-//    }
-
     @Override
     public Order findByEmail(String email) {
         return orderRepository.findByEmail(email);
+    }
+
+    @Override
+    public Order findByUser(Users user) {
+        return orderRepository.findByUsers(user);
     }
 }

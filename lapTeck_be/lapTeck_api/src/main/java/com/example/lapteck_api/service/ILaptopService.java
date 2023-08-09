@@ -16,4 +16,8 @@ public interface ILaptopService {
     Laptop findByIndexCart(IndexCart indexCart);
 
     Laptop findById(int idLaptop);
+
+    List<Laptop> topThreeLaptop();
+
+    List<Laptop> findByNameLaptop(String nameLaptop);
 }

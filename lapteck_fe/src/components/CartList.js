@@ -1,11 +1,15 @@
 import { delCart } from "../service/user/serviceCart";
+import {useNavigate} from "react-router-dom";
 
 function CartList(props) {
     const { carts } = props;
+    const navigate = useNavigate();
+
 
     const handleDelete = async (idDel) => {
         try {
             await delCart(idDel);
+            window.location.href = '/cart';
         } catch (error) {
             console.log(error);
         }

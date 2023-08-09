@@ -2,73 +2,39 @@ function BillingDeTails() {
     return (
         <div className="billing-details">
             <div className="section-title">
-                <h3 className="title">Billing address</h3>
+                <h3 className="title">Thông tin đặt hàng</h3>
             </div>
             <div className="form-group">
                 <input
-                    className="input"
+                    className="input my-2"
                     type="text"
                     name="first-name"
-                    placeholder="First Name"
+                    placeholder="Họ và tên"
                 />
-            </div>
-            <div className="form-group">
                 <input
-                    className="input"
-                    type="text"
-                    name="last-name"
-                    placeholder="Last Name"
-                />
-            </div>
-            <div className="form-group">
-                <input
-                    className="input"
+                    className="input my-2"
                     type="email"
                     name="email"
                     placeholder="Email"
                 />
-            </div>
-            <div className="form-group">
                 <input
-                    className="input"
+                    className="input my-2"
                     type="text"
                     name="address"
-                    placeholder="Address"
+                    placeholder="Địa chỉ"
                 />
-            </div>
-            <div className="form-group">
-                <input className="input" type="text" name="city" placeholder="City" />
-            </div>
-            <div className="form-group">
+                <input className="input my-2" type="text" name="city" placeholder="Thành phố" />
                 <input
-                    className="input"
-                    type="text"
-                    name="country"
-                    placeholder="Country"
-                />
-            </div>
-            <div className="form-group">
-                <input
-                    className="input"
-                    type="text"
-                    name="zip-code"
-                    placeholder="ZIP Code"
-                />
-            </div>
-            <div className="form-group">
-                <input
-                    className="input"
+                    className="input my-2"
                     type="tel"
                     name="tel"
-                    placeholder="Telephone"
+                    placeholder="Số điện thoại"
                 />
-            </div>
-            <div className="form-group">
                 <div className="input-checkbox">
                     <input type="checkbox" id="create-account" />
                     <label for="create-account">
                         <span></span>
-                        Create Account?
+                        Tạo tài khoản?
                     </label>
                     <div className="caption">
                         <p>

@@ -1,6 +1,10 @@
 import PaypalComponent from "./PaypalComponent";
 
 function OrderDetails() {
+
+    const carts = JSON.parse(sessionStorage.getItem('carts'));
+    const total = sessionStorage.getItem('total');
+
     return (
         <>
             <div className="section-title text-center">
@@ -12,14 +16,14 @@ function OrderDetails() {
                     <div><strong>Tạm ước</strong></div>
                 </div>
                 <div className="order-products">
-                    <div className="order-col">
-                        <div>1x Product Name Goes Here</div>
-                        <div>$980.00</div>
+                    {
+                        carts && carts.map((cart) => (
+                            <div className="order-col">
+                                <div>{cart.quantity}x {cart.nameProduct?.toLocaleString("de-DE")}</div>
+                            <div>{cart.totalPrice}</div>
                     </div>
-                    <div className="order-col">
-                        <div>2x Product Name Goes Here</div>
-                        <div>$980.00</div>
-                    </div>
+                        ))
+                    }
                 </div>
                 <div className="order-col">
                     <div>Vận chuyển</div>
@@ -27,7 +31,7 @@ function OrderDetails() {
                 </div>
                 <div className="order-col">
                     <div><strong>Tạm ước</strong></div>
-                    <div><strong className="order-total">$2940.00</strong></div>
+                    <div><strong className="order-total">{total.toLocaleString("de-DE")}</strong></div>
                 </div>
             </div>
             <div className="payment-method">
@@ -66,10 +70,10 @@ function OrderDetails() {
                 <input type="checkbox" id="terms" />
                 <label for="terms">
                     <span></span>
-                    I've read and accept the <a href="#">terms & conditions</a>
+                    Tôi đã đọc và chấp nhận <a href="#">các điều khoản & điều kiện của cửa hàng</a>
                 </label>
             </div>
-            <a href="#" className="primary-btn order-submit">Place order</a>
+            <a href="#" className="primary-btn order-submit">Đặt hàng</a>
         </>
     )
 }

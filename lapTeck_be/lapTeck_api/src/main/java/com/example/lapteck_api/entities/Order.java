@@ -1,6 +1,7 @@
 package com.example.lapteck_api.entities;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 

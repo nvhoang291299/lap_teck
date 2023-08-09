@@ -6,53 +6,49 @@ function Footer() {
 					<div className="row">
 						<div className="col-md-3 col-6">
 							<div className="footer">
-								<h3 className="footer-title">About Us</h3>
+								<h3 className="footer-title">Về chúng tôi</h3>
 								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
 								<ul className="footer-links">
-									<li><a href="#"><i className="fa fa-map-marker"></i>1734 Stonecoal Road</a></li>
-									<li><a href="#"><i className="fa fa-phone"></i>+021-95-51-84</a></li>
-									<li><a href="#"><i className="fa fa-envelope-o"></i>email@email.com</a></li>
+									<li><a href="#"><i className="fa-solid fa-location-dot"></i>Sơn Trà, Đà Nẵng</a></li>
+									<li><a href="#"><i className="fa fa-phone"></i>0984-879-434</a></li>
+									<li><a href="#"><i className="fa-solid fa-envelope"></i>hoang@lapteck.com</a></li>
 								</ul>
 							</div>
 						</div>
 
 						<div className="col-md-3 col-6">
 							<div className="footer">
-								<h3 className="footer-title">Categories</h3>
+								<h3 className="footer-title">Thể loại</h3>
 								<ul className="footer-links">
-									<li><a href="#">Hot deals</a></li>
-									<li><a href="#">Laptops</a></li>
-									<li><a href="#">Smartphones</a></li>
-									<li><a href="#">Cameras</a></li>
-									<li><a href="#">Accessories</a></li>
+									<li><a href="#">Văn phòng</a></li>
+									<li><a href="#">Gaming</a></li>
+									<li><a href="#">Doanh nhân</a></li>
+									<li><a href="#">Đồ hoạ kĩ thuật</a></li>
+									<li><a href="#">Sinh viên</a></li>
 								</ul>
 							</div>
 						</div>
-
-						<div className="clearfix visible-xs"></div>
-
 						<div className="col-md-3 col-6">
 							<div className="footer">
-								<h3 className="footer-title">Information</h3>
+								<h3 className="footer-title">Thông tin</h3>
 								<ul className="footer-links">
-									<li><a href="#">About Us</a></li>
-									<li><a href="#">Contact Us</a></li>
-									<li><a href="#">Privacy Policy</a></li>
-									<li><a href="#">Orders and Returns</a></li>
-									<li><a href="#">Terms & Conditions</a></li>
+									<li><a href="#">Giới thiệu</a></li>
+									<li><a href="#">Liên hệ</a></li>
+									<li><a href="#">Chính sách bảo mật</a></li>
+									<li><a href="#">Đặt hàng và hoàn trả</a></li>
+									<li><a href="#">Điều khoản</a></li>
 								</ul>
 							</div>
 						</div>
 
 						<div className="col-md-3 col-6">
 							<div className="footer">
-								<h3 className="footer-title">Service</h3>
+								<h3 className="footer-title">Dịch vụ</h3>
 								<ul className="footer-links">
-									<li><a href="#">My Account</a></li>
-									<li><a href="#">View Cart</a></li>
-									<li><a href="#">Wishlist</a></li>
-									<li><a href="#">Track My Order</a></li>
-									<li><a href="#">Help</a></li>
+									<li><a href="#">Tài khoản</a></li>
+									<li><a href="#">Giỏ hàng</a></li>
+									<li><a href="#">Lịch sử đơn hàng</a></li>
+									<li><a href="#">Giúp đỡ</a></li>
 								</ul>
 							</div>
 						</div>

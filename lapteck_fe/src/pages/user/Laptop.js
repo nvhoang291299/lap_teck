@@ -2,10 +2,31 @@ import { useEffect, useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import { getDetail } from '../../service/user/serviceProducts';
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import { addCart } from '../../service/user/serviceCart';
 
 function Laptop() {
   let { id } = useParams();
   const [laptop, setLaptop] = useState();
+
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [email, setEmail] = useState("");
+
+
+    useEffect(() => {
+        setIsAuthenticated(JSON.parse(sessionStorage.getItem('status')));
+        setEmail(sessionStorage.getItem('EMAIL'))
+    },[])
+
+    function handleAddToCart(idLaptop) {
+        addCart(idLaptop, email)
+        .then(() => {
+            toast.success("thêm vào giỏ hàng thành công")
+        })
+        .catch((e) => {
+            console.log(e);
+        })
+    }
 
   const showLaptop = async () => {
     try {
@@ -42,7 +63,14 @@ function Laptop() {
                 <div className="product-options">
                 </div>
                 <div className="add-to-cart">
-                  <button className="add-to-cart-btn"><i className="fa fa-shopping-cart" /> Thêm giỏ hàng</button>
+                <button className="add-to-cart-btn" onClick={() => {
+                            if (isAuthenticated) {
+                                handleAddToCart(laptop.id);
+                                console.log(isAuthenticated);
+                            } else {
+                                toast.warn("bạn cần đăng nhập để thêm vào giỏ")
+                            }
+                        }} ><i className="fa fa-shopping-cart"/> Thêm giỏ hàng</button>
                 </div>
                 <ul className="product-links">
                   <li>Thể loại:</li>
@@ -270,6 +298,7 @@ function Laptop() {
           </div>
         </div>
         </div>
+        <ToastContainer />
       </>
       )
 }

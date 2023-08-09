@@ -3,6 +3,7 @@ import '../css/login.css';
 import { useState } from 'react';
 import { postLogin } from '../service/ServiceLogin';
 import {useNavigate} from "react-router-dom";
+import { toast } from 'react-toastify';
 
 function Login() {
     const [failedAccount, setFailedAccount] = useState();
@@ -23,9 +24,11 @@ function Login() {
                         sessionStorage.setItem('ROLES', e.roles[0].authority)
                         sessionStorage.setItem('status', e.statusAuth)
                         if (sessionStorage.getItem('ROLES')  == 'ROLE_ADMIN') {
-                            navigate('/admin')
+                            window.location.href = '/';
+                            toast.success("Bạn đã đăng nhập thành công")
                         } else {
-                            navigate('/')
+                            window.location.href = '/';
+                            toast.success("Bạn đã đăng nhập thành công")
                         }
                         // window.location.href = '/';
                     })

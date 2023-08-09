@@ -8,11 +8,8 @@ import {
 // This value is from the props in the UI
 function PaypalComponent() {
 
-    const style = {"layout":"vertical","display": "inline-block !important"};
-
     function createOrder() {
-        // replace this url with your server
-        return fetch("http://localhost:8080/create-order", {
+        return fetch("/my-server/create-paypal-order", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -22,63 +19,40 @@ function PaypalComponent() {
             body: JSON.stringify({
                 cart: [
                     {
-                        sku: "1blwyeo8",
-                        quantity: 2,
+                        id: "YOUR_PRODUCT_ID",
+                        quantity: "YOUR_PRODUCT_QUANTITY",
                     },
                 ],
             }),
         })
             .then((response) => response.json())
-            .then((order) => {
-                // Your code here after create the order
-                return order.id;
-            });
+            .then((order) => order.id);
     }
     function onApprove(data) {
-        // replace this url with your server
-        return fetch("https://react-paypal-js-storybook.fly.dev/api/paypal/capture-order", {
+          return fetch("/my-server/capture-paypal-order", {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
+              "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                orderID: data.orderID,
-            }),
-        })
-            .then((response) => response.json())
-            .then((orderData) => {
-                // Your code here after capture the order
-            });
-    }
-    
-    // Custom component to wrap the PayPalButtons and show loading spinner
-    const ButtonWrapper = ({ showSpinner }) => {
-        const [{ isPending }] = usePayPalScriptReducer();
-    
-        return (
-            <>
-                { (showSpinner && isPending) && <div className="spinner" /> }
-                <PayPalButtons
-                    style={style}
-                    disabled={false}
-                    forceReRender={[]}
-                    fundingSource={undefined}
-                    createOrder={createOrder}
-                    onApprove={onApprove}
-                />
-            </>
-        );
-    }
-    
+              orderID: data.orderID
+            })
+          })
+          .then((response) => response.json())
+          .then((orderData) => {
+                const name = orderData.payer.name.given_name;
+                alert(`Transaction completed by ${name}`);
+          });
 
-
+        }
     return (
-        <div style={{ maxWidth: "750px", minHeight: "200px" }}>
-            <PayPalScriptProvider options={{ clientId: "test", components: "buttons", currency: "USD" }}>
-                <ButtonWrapper showSpinner={true} />
-            </PayPalScriptProvider>
-        </div>
-    );
+        <PayPalScriptProvider options={{ clientId: "test" }}>
+            <PayPalButtons
+                createOrder={createOrder}
+                onApprove={onApprove}
+            />
+        </PayPalScriptProvider>
+    )
 }
 
 export default PaypalComponent;

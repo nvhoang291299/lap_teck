@@ -30,4 +30,16 @@ public class LaptopController {
         Laptop laptop = laptopService.findById(id);
         return new ResponseEntity<>(laptop, HttpStatus.OK);
     }
+
+    @GetMapping("/expensive")
+    public ResponseEntity<?> expensive(){
+        List<Laptop> laptops = laptopService.topThreeLaptop();
+        return new ResponseEntity<>(laptops, HttpStatus.OK);
+    }
+
+    @GetMapping("/search-laptop")
+    public ResponseEntity<?> search(@RequestParam(name = "nameLaptop") String nameLaptop){
+        List<Laptop> laptops = laptopService.findByNameLaptop(nameLaptop);
+        return new ResponseEntity<>(laptops, HttpStatus.OK);
+    }
 }

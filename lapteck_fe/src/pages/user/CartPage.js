@@ -14,6 +14,9 @@ function CartPage() {
             console.log(error);
           }
     }
+    // console.log(carts);
+    sessionStorage.setItem('carts', JSON.stringify(carts));
+
 
     useEffect(() => {
         fetchApi();
@@ -27,7 +30,7 @@ function CartPage() {
                         <CartList carts={carts} />
                     </div>
                     <div className="col-md-4 justify-content-start">
-                        <CartTotal />
+                        <CartTotal carts={carts}/>
                     </div>
     		    </div>
 		    </div>

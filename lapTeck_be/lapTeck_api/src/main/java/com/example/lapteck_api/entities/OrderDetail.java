@@ -14,7 +14,7 @@ public class OrderDetail {
     private int id;
 
     @Column(name = "unit_price")
-    private String unitPrice;
+    private long unitPrice;
 
     @Column(name = "quantity")
     private int quantityOrder;
@@ -33,7 +33,7 @@ public class OrderDetail {
     public OrderDetail() {
     }
 
-    public OrderDetail(int id, String unitPrice, int quantityOrder, Laptop laptop, Order order) {
+    public OrderDetail(int id, long unitPrice, int quantityOrder, Laptop laptop, Order order) {
         this.id = id;
         this.unitPrice = unitPrice;
         this.quantityOrder = quantityOrder;
@@ -49,11 +49,11 @@ public class OrderDetail {
         this.id = id;
     }
 
-    public String getUnitPrice() {
+    public long getUnitPrice() {
         return unitPrice;
     }
 
-    public void setUnitPrice(String unitPrice) {
+    public void setUnitPrice(long unitPrice) {
         this.unitPrice = unitPrice;
     }
 

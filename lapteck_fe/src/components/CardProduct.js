@@ -28,15 +28,16 @@ function CardProduct(props) {
 
     return (
         <div className="col-md-4 col-xs-6">
-            <Link to={`/laptop/${laptop.id}`}>
                 <div className="product">
-                    <div className="product-img">
-                        <img src={laptop.image} />
-                        <div className="product-label">
-                            <span className="sale">-30%</span>
-                            {/* <span className="new">NEW</span> */}
+                    <Link to={`/laptop/${laptop.id}`}>
+                        <div className="product-img">
+                            <img src={laptop.image} style={{height: "250px"}}/>
+                            <div className="product-label">
+                                <span className="sale">-30%</span>
+                                {/* <span className="new">NEW</span> */}
+                            </div>
                         </div>
-                    </div>
+                    </Link>
                     <div className="product-body">
                         <h3 className="product-name"><a href="#">{laptop.nameProduct}</a></h3>
                         <h4 className="product-price">{laptop.price.toLocaleString("de-DE")}</h4>
@@ -49,9 +50,7 @@ function CardProduct(props) {
                             }
                         }} ><i className="fa fa-shopping-cart"/> Thêm giỏ hàng</button>
                     </div>
-                </div>
-            </Link>
-            
+                </div>            
         </div>
 
     )

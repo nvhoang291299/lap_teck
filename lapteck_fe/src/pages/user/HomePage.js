@@ -1,6 +1,7 @@
 import Collections from '../../components/Collections';
 import HotDeal from '../../components/HotDeal';
 import CarouselProduct from '../../components/CarouselProduct';
+import { ToastContainer } from 'react-toastify';
 
 function HomePage() {
     return (
@@ -17,6 +18,7 @@ function HomePage() {
             <CarouselProduct />
             <HotDeal />
             <CarouselProduct />
+            <ToastContainer />
         </>
     )
 }
